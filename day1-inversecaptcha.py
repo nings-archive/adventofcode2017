@@ -1,8 +1,6 @@
 #! /usr/bin/env python3
 
 from given_inputs import day1
-''' PART1: 1177
-    PART2: 1060 '''
 
 def offset_by(seq, i):
     '''returns the seq, but starting from the ith index'''
@@ -20,8 +18,8 @@ def compare_and_sum(seq1, seq2):
 print(compare_and_sum(
     day1, 
     offset_by(day1, -1)
-))
+))  # Part 1: 1177
 print(compare_and_sum(
     day1,
     offset_by(day1, len(day1)//2)
-))
+))  # Part 2: 1060
