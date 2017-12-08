@@ -22,3 +22,4 @@ while configuration not in previous_states:
     cycles += 1
 
 print(cycles)  # Part 1: 6681
+print(cycles - previous_states.index(configuration))  # Part 2: 2392
