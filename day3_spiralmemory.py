@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 from given_inputs import day3
-import time
 
 def get_steps(grid):
     ''' the quadrants are defined as:
