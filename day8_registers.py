@@ -14,42 +14,27 @@ def evaluate_statement(statement):
     reg2 = statement[4]
     op2  = statement[5]
     val2 = int(statement[6])
+    try_init_regs(reg1, reg2)
 
-    try:
-        reg_val2 = reg_lookup[reg2]
-    except KeyError:
-        reg_lookup[reg2] = reg_val2 = 0
-
-    if evaluate_conditional(reg_val2, op2, val2):
+    if evaluate_conditional(reg2, op2, val2):
         evaluate_operation(reg1, op1, val1)
 
-def evaluate_operation(reg, op, val):
-    if op == 'inc':
+def try_init_regs(*args):
+    for reg in args:
         try:
-            reg_lookup[reg] += val
+            reg_lookup[reg]
         except KeyError:
-            reg_lookup[reg] = val
-    elif op == 'dec':
-        try:
-            reg_lookup[reg] -= val
-        except KeyError:
-            reg_lookup[reg] = -val
+            reg_lookup[reg] = 0
 
-def evaluate_conditional(reg_val, op, val):
-    if op == '==':
-        return reg_val == val
-    elif op == '!=':
-        return reg_val != val
-    elif op == '<=':
-        return reg_val <= val
-    elif op == '>=':
-        return reg_val >= val
-    elif op == '<':
-        return reg_val < val
-    elif op == '>':
-        return reg_val > val
-    else:
-        pass
+def evaluate_operation(reg, op, val):
+    exec("reg_lookup['{}'] {} {}".format(
+        reg,
+        '+=' if op == 'inc' else '-=',
+        val
+    ))
+
+def evaluate_conditional(reg, op, val):
+    return eval('{} {} {}'.format(reg_lookup[reg], op, val))
 
 max_values = []
 for instruction in instructions:
