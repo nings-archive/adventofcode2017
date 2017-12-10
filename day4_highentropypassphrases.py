@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from given_inputs import day4
+from inputs_given import day4
 from collections import Counter
 
 # list<list<str>>

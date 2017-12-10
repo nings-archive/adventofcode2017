@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from given_inputs import day2
+from inputs_given import day2
 
 spreadsheet_2dlist = [ 
         list(map(int, row.split('\t'))) 

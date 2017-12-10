@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from given_inputs import day1
+from inputs_given import day1
 
 def offset_by(seq, i):
     '''returns the seq, but starting from the ith index'''

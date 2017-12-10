@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from given_inputs import day6
+from inputs_given import day6
 
 configuration = [ int(bank) for bank in day6.split() ]
 num_banks = len(configuration)

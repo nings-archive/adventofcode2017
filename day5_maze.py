@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from given_inputs import day5
+from inputs_given import day5
 
 jumps = [ int(offset) for offset in day5.split('\n') ]
 length = len(jumps)

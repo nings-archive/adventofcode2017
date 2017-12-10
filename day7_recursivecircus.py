@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
-from given_inputs import day7
-# from given_inputs import day7test as day7  # small testcase
+from inputs_given import day7
+# from inputs_given import day7test as day7  # small testcase
 
 # the bottom program is the one not being held at all
 # first generate a dict representing the data
