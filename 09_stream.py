@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 
+from inputs_given import get_day9
 import re
 
-INPUT_FILE = 'inputs_given_day9.txt'
 # match ! ; match one of any character
 ignore_re  = '!.'
 # match < ; match any num of any char except > ; match >
@@ -10,8 +10,7 @@ garbage_re = '<[^>]*>'
 # match anything that is not { or }
 non_braces = '[^{}]'
 
-with open(INPUT_FILE, 'r') as file:
-    stream = file.read()
+stream = get_day9()
 
 def remove_ignored(stream):
     return re.sub(ignore_re, '', stream)

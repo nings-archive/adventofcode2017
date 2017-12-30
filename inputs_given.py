@@ -4022,4 +4022,9 @@ ae inc 996 if su >= -1564
 buw inc 559 if okl <= 1919\
 '''
 
+def get_day9():
+    # placed in function, so not loaded unless called
+    with open('inputs_given_day9.txt') as file:
+        return file.read()
+
 day10 = '97,167,54,178,2,11,209,174,119,248,254,0,255,1,64,190'
