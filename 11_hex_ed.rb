@@ -5,22 +5,17 @@ require './inputs_given.rb'
 
 class Grid
     # Axial coordinate system for hexagonal grids
-    @@N = OpenStruct.new
-      @@N.x = 0;   @@N.y = 1
-    @@NE = OpenStruct.new
-      @@NE.x = 1;  @@NE.y = 0
-    @@SE = OpenStruct.new
-      @@SE.x = 1;  @@SE.y = -1
-    @@S = OpenStruct.new
-      @@S.x = 0;   @@S.y = -1
-    @@SW = OpenStruct.new
-      @@SW.x = -1; @@SW.y = 0
-    @@NW = OpenStruct.new
-      @@NW.x = -1; @@NW.y = 1
-    @@dir_map = {
-        'n' => @@N, 'ne' => @@NE, 'se' => @@SE,
-        's' => @@S, 'sw' => @@SW, 'nw' => @@NW
-    }
+    # x = 0 and y = 0 make a 60 degree angle rather than 90
+    @@N  = OpenStruct.new;  @@N.x = 0;   @@N.y = 1
+    @@NE = OpenStruct.new; @@NE.x = 1;  @@NE.y = 0
+    @@SE = OpenStruct.new; @@SE.x = 1;  @@SE.y = -1
+    @@S  = OpenStruct.new;  @@S.x = 0;   @@S.y = -1
+    @@SW = OpenStruct.new; @@SW.x = -1; @@SW.y = 0
+    @@NW = OpenStruct.new; @@NW.x = -1; @@NW.y = 1
+    @@dir_map = { 'n' => @@N,
+          'nw' => @@NW, 'ne' => @@NE,
+          'sw' => @@SW, 'se' => @@SE,
+                  's' => @@S }
 
     def initialize()
         @x, @y = 0, 0
@@ -33,10 +28,7 @@ class Grid
         # https://stackoverflow.com/a/19557156/
         @x = @x + @@dir_map[dir].x
         @y = @y + @@dir_map[dir].y
-        solve_current = self.solve
-        if solve_current > @furthest
-            @furthest = solve_current
-        end
+        @furthest = [ @furthest, self.solve ].max  # slow
     end
 
     def solve()
